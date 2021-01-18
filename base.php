@@ -3,7 +3,7 @@
 date_default_timezone_set("Asia/Taipei");
 session_start();
 
-$Botoom=new DB('bottom');
+$Bottom=new DB('bottom');
 
 
 class DB{
