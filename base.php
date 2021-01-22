@@ -6,6 +6,7 @@ session_start();
 $Bottom=new DB('bottom');
 $Mem=new DB('mem');
 $Admin=new DB('admin');
+$Type=new DB("type");
 class DB{
     protected $dsn="mysql:host=localhost;dbname=db66;charset=utf8";
     protected $table;
