@@ -28,10 +28,10 @@
 foreach($bigs as $big){
 ?>
     <tr class='tt'>
-        <td><?=$big['name'];?></td>
+        <td id='t<?=$big['id'];?>'><?=$big['name'];?></td>
         <td class="ct">
-            <button>修改</button>
-            <button>刪除</button>
+            <button onclick="edit(<?=$big['id'];?>,'<?=$big['name'];?>')">修改</button>
+            <button onclick="del('type',<?=$big['id'];?>)">刪除</button>
         </td>
     </tr>
 <?php
@@ -40,10 +40,10 @@ foreach($bigs as $big){
         foreach ($mids as $mid) {
         ?>
     <tr class='pp ct'>
-        <td><?=$mid['name'];?></td>
+        <td id='t<?=$mid['id'];?>'><?=$mid['name'];?></td>
         <td>
-            <button>修改</button>
-            <button>刪除</button>
+            <button onclick="edit(<?=$mid['id'];?>,'<?=$mid['name'];?>')">修改</button>
+            <button onclick="del('type',<?=$mid['id'];?>)">刪除</button>
         </td>
     </tr>
 
@@ -56,3 +56,19 @@ foreach($bigs as $big){
 <hr>
 <h2 class="ct">商品管理</h2>
 <div class="ct"><button onclick="lof('?do=add_goods')">新增商品</button></div>
+
+
+
+
+<script>
+function edit(id,name){
+    let result=prompt('修改分類名稱為:',name)
+    if(result!=null){
+        $.post('api/edit_type.php',{id,result},function(){
+            //$("#t"+id).html(result)
+            location.reload();
+        })
+    }
+}
+
+</script>
