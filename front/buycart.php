@@ -12,6 +12,13 @@ if(empty($_SESSION['mem'])){
 ?>
 
 <h2 class="ct"><?=$_SESSION['mem'];?>的購物車</h2>
+<?php
+if(empty($_SESSION['cart'])){
+    echo "購物車是空的，請前往商品選購商品";
+    exit();
+}
+
+?>
 
 <table class="all">
     <tr class="tt ct">
