@@ -4,7 +4,7 @@
         <tr>
             <td class="tt">所屬大分類</td>
             <td class="pp">
-                <select name="big" id="big"></select>
+                <select name="big" id="big" onchange="getMids()"></select>
             </td>
         </tr>
         <tr>
@@ -48,3 +48,21 @@
         <input type="button" value="返回" onclick="lof('?do=th')">
     </div>
 </form>
+
+<script>
+getBigs();
+
+function getBigs(){
+        $.get("api/get_big.php",function(bigs){
+            $("#big").html(bigs)
+            getMids($("#big").val());
+        })
+}
+
+function getMids(){
+    $.get("api/get_mid.php",{bigId:$("#big").val()},function(mids){
+        $("#mid").html(mids)
+    })
+}
+
+</script>
