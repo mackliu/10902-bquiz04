@@ -54,9 +54,9 @@ foreach($bigs as $big){
 ?>
 </table>
 <hr>
+<!--商品管理-->
 <h2 class="ct">商品管理</h2>
 <div class="ct"><button onclick="lof('?do=add_goods')">新增商品</button></div>
-
 
 
 
