@@ -105,6 +105,10 @@ div.ww:hover > div.s
 {
 	display:block;
 }
+#left .s a {
+	background:lightgreen;
+	color:darkgreen;
+}
 .sb button
 {
 	font-size:12px;
