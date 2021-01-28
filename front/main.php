@@ -23,9 +23,11 @@ if(isset($_GET['big']) && isset($_GET['mid'])){
 <?php
 foreach($goods as $g){
 ?>
-    <div class='pp' style="clear:both;overflow:auto;margin:5px">
-      <div style="display:inline-block"><img src='img/<?=$g['img'];?>' style='width:200px'></div>
-      <div style="display:inline-block;vertical-align:top">
+    <div class='pp' style="display:flex;padding:10px 0 10px 10px">
+      <div style="width:40%;text-align:center">
+        <a href="?do=detail&id=<?=$g['id'];?>"><img src='img/<?=$g['img'];?>' style='width:200px'></a>
+    </div>
+      <div style="width:60%;vertical-align:top">
           <div class='tt ct'><?=$g['name'];?></div>
           <div>價錢:<?=$g['price'];?>
             <a style="float:right" href="?do=buycart&goods=<?=$g['id'];?>&qt=1"><img src="icon/0402.jpg" ></a>
