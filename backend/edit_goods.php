@@ -57,7 +57,7 @@ $goods=$Goods->find($_GET['id']);
 
 <script>
 getBigs();
-
+let first=true;
 function getBigs(){
         $.get("api/get_big.php",function(bigs){
             $("#big").html(bigs)
@@ -71,7 +71,11 @@ function getMids(){
     $.get("api/get_mid.php",{bigId:$("#big").val()},function(mids){
         $("#mid").html(mids)
         //利用jquery找到符合商品中分類的選項,並設為選中的狀態
-        $("#mid option[value='<?=$goods['mid'];?>']").prop('selected',true);
+        if(first){
+            $("#mid option[value='<?=$goods['mid'];?>']").prop('selected',true);
+
+        }
+        first=false
     })
 }
 

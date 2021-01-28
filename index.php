@@ -43,7 +43,7 @@
         <div id="left" class="ct">
         	<div style="min-height:400px;">
                     <!--選單-->
-                <a href='?big=0'>全部商品(<?=$Goods->count();?>)</a>
+                <a href='?'>全部商品(<?=$Goods->count();?>)</a>
             <?php
                 $bigs=$Type->all(['parent'=>0]);
                 foreach($bigs as $big){
