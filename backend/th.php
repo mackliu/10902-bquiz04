@@ -57,6 +57,38 @@ foreach($bigs as $big){
 <!--商品管理-->
 <h2 class="ct">商品管理</h2>
 <div class="ct"><button onclick="lof('?do=add_goods')">新增商品</button></div>
+<table class='all'>
+<tr class="tt">
+    <td>編號</td>
+    <td>商品名稱</td>
+    <td>庫存量</td>
+    <td>狀態</td>
+    <td width='23%'>操作</td>
+</tr>
+<?php
+$goods=$Goods->all();
+foreach($goods as $g){
+    ?>
+        <!-- tr.pp>td*4+td>button*4 -->
+        <tr class="pp">
+            <td><?=$g['num'];?></td>
+            <td><?=$g['name'];?></td>
+            <td><?=$g['quota'];?></td>
+            <td><?=($g['sh']==1)?"販售中":"已下架";?></td>
+            <td>
+                <button onclick="lof('?do=edit_goods&id=<?=$g['id'];?>')">修改</button>
+                <button onclick="del('goods',<?=$g['id'];?>)">刪除</button>
+                <button onclick="sh('up',<?=$g['id'];?>)">上架</button>
+                <button onclick="sh('down',<?=$g['id'];?>)">下架</button>
+            </td>
+        </tr>
+    <?php
+}
+
+?>
+
+</table>
+
 
 
 
@@ -69,6 +101,12 @@ function edit(id,name){
             location.reload();
         })
     }
+}
+
+function sh(type,id){
+    $.post('api/sh.php',{type,id},function(){
+        location.reload();
+    })
 }
 
 </script>
