@@ -1,10 +1,10 @@
 <h2 class="ct">新增商品</h2>
-<form action="api/add_goods.php" method="post" enctype="multipart/form-data">
+<form action="api/save_goods.php" method="post" enctype="multipart/form-data">
     <table class="all">
         <tr>
             <td class="tt">所屬大分類</td>
             <td class="pp">
-                <select name="big" id="big" onchange="getMids()"></select>
+                <select name="big" id="big" onchange="getType('mid')"></select>
             </td>
         </tr>
         <tr>
@@ -50,19 +50,44 @@
 </form>
 
 <script>
-getBigs();
+getType('big');
 
-function getBigs(){
-        $.get("api/get_big.php",function(bigs){
-            $("#big").html(bigs)
-            getMids();
-        })
-}
+function getType(type){
+    switch(type){
+        case 'big':
+            $.get("api/get_type.php",{type:'big'},function(bigs){
+                //console.log(bigs)
+                let b=JSON.parse(bigs)
+                console.log("b",b)
 
-function getMids(){
-    $.get("api/get_mid.php",{bigId:$("#big").val()},function(mids){
-        $("#mid").html(mids)
+                b.forEach(function(o,i){
+                    
+                    let dom=document.createElement('option');
+                        dom.setAttribute("value",o.id)
+                    let text=document.createTextNode(o.name)
+                        dom.appendChild(text);
+                    $("#big").append(dom)
+                })
+                //$("#big").html(bigs)
+                getType('mid');
+            })
+        break;
+        case 'mid':
+            $.get("api/get_type.php",{type:'mid',bigId:$("#big").val()},function(mids){
+                let m=JSON.parse(mids)
+                $("#mid").html("");
+                m.forEach(function(o,i){
+                    let dom=document.createElement('option');
+                        dom.setAttribute("value",o.id)
+                    let text=document.createTextNode(o.name)
+                        dom.appendChild(text);
+                    $("#mid").append(dom)
+                })
+           
     })
+        break;
+    }
+
 }
 
 </script>

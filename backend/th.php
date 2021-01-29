@@ -1,12 +1,12 @@
 <h2 class="ct">商品分類</h2>
-<form action="api/add_big.php" method="post">
+<form action="api/add_type.php" method="post">
     <div class="ct">
         新增大分類
         <input type="text" name="big" >
         <input type="submit" value="新增">
     </div>
 </form>
-<form action="api/add_mid.php" method="post">
+<form action="api/add_type.php" method="post">
     <div class="ct">
         新增中分類
 

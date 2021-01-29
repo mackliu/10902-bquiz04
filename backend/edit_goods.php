@@ -4,7 +4,7 @@ $goods=$Goods->find($_GET['id']);
 
 ?>
 <h2 class="ct">修改商品</h2>
-<form action="api/edit_goods.php" method="post" enctype="multipart/form-data">
+<form action="api/save_goods.php" method="post" enctype="multipart/form-data">
     <table class="all">
         <tr>
             <td class="tt">所屬大分類</td>
@@ -23,7 +23,7 @@ $goods=$Goods->find($_GET['id']);
             <td class="pp"><?=$goods['num'];?></td>
         </tr>
         <tr>
-            <td class="tt">商品名稱</td>
+            <td class="tt">商品名稱</td>                          
             <td class="pp"><input type="text" name='name' value="<?=$goods['name'];?>"></td>
         </tr>
         <tr>
