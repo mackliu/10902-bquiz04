@@ -1,13 +1,13 @@
 <?php
 
-if(isset($_GET['goods'])){
+/* if(isset($_GET['goods'])){
     $_SESSION['cart'][$_GET['goods']]=$_GET['qt'];
 }
 
 if(empty($_SESSION['mem'])){
     to("../index.php?do=login");
     exit();
-}
+} */
 
 ?>
 
@@ -41,7 +41,7 @@ if(empty($_SESSION['cart'])){
         <td><?=$g['quota'];?></td>
         <td><?=$g['price'];?></td>
         <td><?=$qt*$g['price'];?></td>
-        <td><img src="icon/0415.jpg" ></td>
+        <td><img src="icon/0415.jpg"  onclick="delItem(<?=$id;?>)"></td>
     </tr>
 <?php
     }
@@ -53,3 +53,13 @@ if(empty($_SESSION['cart'])){
 </div>
 
 
+<script>
+
+function delItem(id){
+    $.post("api/del_item.php",{id},function(){
+        location.href="?do=buycart";
+    })
+}
+
+
+</script>

@@ -1,4 +1,19 @@
-<?php include_once "base.php";?>
+<?php include_once "base.php";
+
+//遇到header重覆發送時,把導頁判斷移到index.php的最前面
+if(isset($_GET['do']) && $_GET['do']=='buycart'){
+
+    if(isset($_GET['goods'])){
+        $_SESSION['cart'][$_GET['goods']]=$_GET['qt'];
+    }
+    
+    if(empty($_SESSION['mem'])){
+        to("../index.php?do=login");
+        exit();
+    }
+}
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
