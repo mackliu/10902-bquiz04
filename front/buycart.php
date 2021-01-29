@@ -37,10 +37,10 @@ if(empty($_SESSION['cart'])){
     <tr class="pp ct">
         <td><?=$g['num'];?></td>
         <td><?=$g['name'];?></td>
-        <td><?=$qt;?></td>
+        <td><input class='qt' type='number' value="<?=$qt;?>" data-id="<?=$g['id'];?>" data-price="<?=$g['price'];?>" style="width:50px"></td>
         <td><?=$g['quota'];?></td>
         <td><?=$g['price'];?></td>
-        <td><?=$qt*$g['price'];?></td>
+        <td id="sum<?=$g['id'];?>"><?=$qt*$g['price'];?></td>
         <td><img src="icon/0415.jpg"  onclick="delItem(<?=$id;?>)"></td>
     </tr>
 <?php
@@ -61,5 +61,15 @@ function delItem(id){
     })
 }
 
+$(".qt").on("change",function(){
+    let qt=$(this).val();
+    let id=$(this).data('id')
+    let price=$(this).data('price')
+    
+    $.post("api/update_cart.php",{id,qt},(res)=>{
+        $("#sum"+id).html(qt*price)
+        console.log(res)
+    })
+})
 
 </script>
