@@ -1,6 +1,7 @@
 <?php include_once "../base.php";
 
 $_POST['cart']=serialize($_SESSION['cart']);
+$_POST['num']=date("Ymd").rand(100000,999999);
 
 $Ord->save($_POST);
 
