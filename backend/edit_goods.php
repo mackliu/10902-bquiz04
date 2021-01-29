@@ -4,7 +4,7 @@ $goods=$Goods->find($_GET['id']);
 
 ?>
 <h2 class="ct">修改商品</h2>
-<form action="api/edit_goods.php" method="post">
+<form action="api/edit_goods.php" method="post" enctype="multipart/form-data">
     <table class="all">
         <tr>
             <td class="tt">所屬大分類</td>

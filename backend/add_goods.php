@@ -1,5 +1,5 @@
 <h2 class="ct">新增商品</h2>
-<form action="api/add_goods.php" method="post">
+<form action="api/add_goods.php" method="post" enctype="multipart/form-data">
     <table class="all">
         <tr>
             <td class="tt">所屬大分類</td>
